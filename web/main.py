@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
+# from transformers import BartTokenizer, TFBartForConditionalGeneration, BartConfig
+# import tokenizers
+from models import *
+
 global DATA_URL
 global DATA
 global PRODUCT_NAME
@@ -41,17 +45,15 @@ def product():
     pro = st.radio("리뷰 분석이 가능한 상품 목록입니다", (PRODUCT_NAME))
 
     if pro == PRODUCT_NAME[0]:
-       st.image(Image.open("../images/라운드랩 자작나무 수분 크림 1+1.jpg"), width = 400, caption = PRODUCT_NAME[0]) 
+       st.image(Image.open("../images/라운드랩 자작나무 수분 크림 1+1.jpg"), width = 300, caption = PRODUCT_NAME[0]) 
 
     
 
 
 
-
 def main():
     selected_box = st.sidebar.selectbox(
-    'Choose one of the following',
-    ('Home', '상품 보기') 
+    'Choose one of the following', ('Home', '상품 보기') 
     )
 
     if selected_box == "Home" :

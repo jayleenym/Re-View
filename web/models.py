@@ -1,5 +1,5 @@
 
-
+"""
 def run_sum(model, tokenizer, context):
     inputs = tokenizer([context], max_length=1024, return_tensors='tf')
     summary_ids = model.generate(inputs['input_ids'],
@@ -8,3 +8,7 @@ def run_sum(model, tokenizer, context):
                             clean_up_tokenization_spaces=False) for g in summary_ids]
     
     return outputs
+"""
+
+def classification(model, tokenizer):
+    input = tokenizer()
