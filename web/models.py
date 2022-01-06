@@ -9,6 +9,9 @@ def run_sum(model, tokenizer, context):
     
     return outputs
 """
-
+# 군집화
 def classification(model, tokenizer):
     input = tokenizer()
+
+# 유용성 점수
+# def kobert():
