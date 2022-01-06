@@ -1,6 +1,6 @@
 streamlit
 tensorflow-cpu
-pytorch
+torch
 pandas
 image
 transformers
