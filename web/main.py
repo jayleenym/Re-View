@@ -14,7 +14,7 @@ DATA_URL = "./"
 
 @st.cache()
 def load_data():
-    data = pd.read_csv(DATA_URL + "labeling_합본.csv")
+    data = pd.read_csv("./labeling_합본.csv")
     data = data[data['표준편차'] < 1][['평균', '상품명', '리뷰']]
     return data
 
@@ -54,7 +54,7 @@ def main():
     )
 
     if selected_box == "Home" :
-        st.title("✍🏻리뷰의 반란")
+        st.title("✍🏻리뷰의 재발견")
         st.subheader("안녕하세요, 🧠무뇌형 인간🧠입니다")
         
          

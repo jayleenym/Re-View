@@ -9,7 +9,7 @@ Original file is located at
 
 
 
-!pip install transformers
+# !pip install transformers
 
 import tensorflow as tf
 import torch
