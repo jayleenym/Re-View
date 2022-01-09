@@ -49,18 +49,18 @@ def product():
 
 
 def main():
-    selected_box = st.sidebar.selectbox(
-    'Choose one of the following', ('Home', PRODUCT_NAME[0]) 
-    )
+    # selected_box = st.sidebar.selectbox(
+    # 'Choose one of the following', ('Home', PRODUCT_NAME[0]) 
+    # )
 
-    if selected_box == "Home" :
-        st.title("✍🏻리뷰의 재발견")
-        st.subheader("안녕하세요, 🧠무뇌형 인간🧠입니다")
+    # if selected_box == "Home" :
+    st.title("✍🏻리뷰의 재발견")
+    st.subheader("안녕하세요, 🧠무뇌형 인간🧠입니다")
         
          
-        #  st.write(DATA)
+    st.write(DATA)
 
-    if selected_box == '상품 보기': product()
+    # if selected_box == '상품 보기': product()
         
     
 if __name__ == "__main__":
