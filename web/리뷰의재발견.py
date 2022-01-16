@@ -62,6 +62,28 @@ def product_page():
     st.markdown('''현재 분석 가능한 상품 목록입니다.  원하는 상품을 선택해주세요!''')
     # st.write(PRODUCT_NAME)
 
+    st.subheader("리뷰 유용성 평가")
+    review = st.text_input("새로운 리뷰를 입력하세요.")
+    review = '너무 좋아요 저 건성인데 이거 쓰니까 괜찮았어요'
+    _, c2 = st.columns([6, 1])
+    with c2:
+        rv_btn = st.button('평가하기')
+    
+    if rv_btn:
+        st.write("{'useful' : 0.99, 'useless' : 0.01}")
+        st.write("99%의 확률로 유용한 리뷰입니다.")
+
+    df = DATA[DATA['상품명'] == PRODUCT_NAME[0]][['리뷰', '평균']]
+    st.markdown("#### 유용성 결정 요인")
+    mecab = Mecab()
+    word = mecab.nouns(df['리뷰'].sum().replace("것", " ").replace("사용", " ").replace('거', " ").replace('제품', " "))
+    counts = Counter(word).most_common(50)
+    wc = WordCloud(font_path = '/Library/Fonts/applegothic.ttf', background_color = 'white')
+    cloud = wc.generate_from_frequencies(dict(counts))
+    # st.write((type(cloud)))
+    cloud.to_file('../images/wc.png')
+    st.image('../images/wc.png')
+
     c1, c2, c3 = st.columns(3)
     with c1: 
         st.image("https://image.oliveyoung.co.kr/uploads/images/goods/550/10/0000/0015/A00000015329101ko.jpg?l=ko", caption = PRODUCT_NAME[0])
@@ -109,17 +131,9 @@ def one_product(i):
             # st.set_option('wideMode', True)
             # st.write(df)
     
-    with c2:
+    # with c2:
         # (임시) WordCloud
-        st.markdown("#### 유용성 결정 요인")
-        mecab = Mecab()
-        word = mecab.nouns(df['리뷰'].sum().replace("것", " ").replace("사용", " ").replace('거', " ").replace('제품', " "))
-        counts = Counter(word).most_common(50)
-        wc = WordCloud(font_path = '/Library/Fonts/applegothic.ttf', background_color = 'white')
-        cloud = wc.generate_from_frequencies(dict(counts))
-        # st.write((type(cloud)))
-        cloud.to_file('../images/wc.png')
-        st.image('../images/wc.png')
+        
 
     # 군집화 결과
     st.markdown('#### 군집화 결과')
@@ -144,5 +158,5 @@ if __name__ == "__main__":
     #         next = False
     # elif my_button == '상품 목록':
     #     next = False
-        # product_page()
-    one_product(0)
+    product_page()
+    # one_product(0)
