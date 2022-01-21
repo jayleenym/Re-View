@@ -4,3 +4,4 @@ torch
 pandas
 image
 transformers
+streamlit_pages
